@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configura&#231;&#227;o de Privacidade &mdash; Google AI Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--deep:#0f0a18;--plum:#1a1025;--plum-card:#1e1230;--violet:#6b2fa0;--violet-soft:#8b5fbf;--violet-dim:rgba(107,47,160,0.12);--rose:#d4a574;--rose-light:#e8c4a0;--rose-border:rgba(212,165,116,0.18);--rose-glow:rgba(212,165,116,0.10);--mauve:#a08bb5;--mauve-light:#c4b3d4;--white:#f5f0fa;--border:rgba(160,139,181,0.12);--font-d:'Cormorant Garamond',Georgia,serif;--font-b:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);background:var(--deep);color:var(--mauve-light);line-height:1.7;-webkit-font-smoothing:antialiased}
+.container{max-width:860px;margin:0 auto;padding:0 24px}
+a{color:var(--rose);text-decoration:none}
+a:hover{color:var(--rose-light);text-decoration:underline}
+
+/* Header */
+.top-bar{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.top-bar a{color:var(--mauve);font-size:.84rem;font-weight:500}
+.top-bar a:hover{color:var(--rose);text-decoration:none}
+.top-bar .sep{color:var(--border);font-size:.7rem}
+
+/* Hero */
+.pg-hero{padding:100px 0 48px;text-align:center}
+.pg-hero h1{font-family:var(--font-d);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:600;color:var(--white);margin-bottom:12px}
+.pg-hero p{font-size:.92rem;color:var(--mauve);max-width:600px;margin:0 auto}
+
+/* Sections */
+.pg-section{padding:48px 0;border-top:1px solid var(--border)}
+.pg-section h2{font-family:var(--font-d);font-size:1.6rem;font-weight:600;color:var(--white);margin-bottom:16px}
+.pg-section h3{font-family:var(--font-d);font-size:1.2rem;font-weight:600;color:var(--rose-light);margin:24px 0 10px}
+.pg-section p,.pg-section li{font-size:.88rem;color:var(--mauve-light);line-height:1.75;margin-bottom:10px}
+.pg-section ul,.pg-section ol{padding-left:20px;margin-bottom:16px}
+.pg-section li::marker{color:var(--rose)}
+
+/* Info boxes */
+.info-box{background:var(--plum-card);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin:20px 0}
+.info-box.highlight{border-color:var(--rose-border);background:linear-gradient(135deg,var(--plum-card),rgba(212,165,116,.03))}
+.info-box h4{font-family:var(--font-d);font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px}
+
+/* Comparison grid */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.compare-card{background:var(--plum-card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.compare-card.recommended{border-color:var(--rose-border)}
+.compare-card h4{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.compare-card ul{list-style:none;padding:0}
+.compare-card li{padding:4px 0;font-size:.84rem;position:relative;padding-left:16px}
+.compare-card li::before{content:'\2022';position:absolute;left:0;color:var(--mauve)}
+.compare-card.recommended li::before{color:var(--rose)}
+
+/* Steps */
+.step-list{counter-reset:steps}
+.step-item{counter-increment:steps;display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+.step-item::before{content:counter(steps);width:28px;height:28px;border-radius:50%;background:var(--violet-dim);border:1px solid var(--violet);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:var(--violet-soft);flex-shrink:0}
+
+/* Links grid */
+.links-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.link-card{background:var(--plum-card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;transition:all .3s}
+.link-card:hover{border-color:var(--rose-border)}
+.link-card h4{font-size:.88rem;font-weight:600;color:var(--white);margin-bottom:4px}
+.link-card p{font-size:.76rem;color:var(--mauve);margin-bottom:8px}
+.link-card a{font-size:.76rem;font-weight:600}
+
+/* Disclaimer */
+.disclaimer{background:var(--violet-dim);border:1px solid rgba(107,47,160,.2);border-radius:10px;padding:16px 20px;margin:24px 0;font-size:.82rem;color:var(--violet-soft)}
+
+/* Footer */
+.pg-footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;font-size:.75rem;color:rgba(160,139,181,.4)}
+
+@media(max-width:768px){.compare,.links-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="index.html">&#8592; Voltar</a>
+  <span class="sep">|</span>
+  <a href="privacidade-gemini.html">Privacidade do Gemini &#8594;</a>
+</div>
+
+<div class="pg-hero">
+  <div class="container">
+    <h1>Configura&#231;&#227;o de Privacidade do<br>Google AI Studio</h1>
+    <p>Como configurar sua conta Google para garantir a prote&#231;&#227;o de dados ao utilizar o AI Studio, em conformidade com a Resolu&#231;&#227;o CNJ n&#186; 615/2025.</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Marco Regulatório -->
+  <div class="pg-section">
+    <h2>&#128220; Marco Regulat&#243;rio</h2>
+    <p>A Resolu&#231;&#227;o CNJ n&#186; 615/2025 estabelece, em seu art. 19, a proibi&#231;&#227;o do uso de modelos de linguagem (LLMs) que utilizem dados do Poder Judici&#225;rio para o seu pr&#243;prio treinamento. A norma visa assegurar a confidencialidade das informa&#231;&#245;es processuais e o uso &#233;tico da intelig&#234;ncia artificial no &#226;mbito da Justi&#231;a.</p>
+
+    <div class="info-box">
+      <h4>&#9888;&#65039; Prazo Cr&#237;tico</h4>
+      <p>Servidores e magistrados que utilizem o Google AI Studio devem revisar suas configura&#231;&#245;es de privacidade para adequ&#225;-las &#224;s exig&#234;ncias regulamentares.</p>
+    </div>
+  </div>
+
+  <!-- Entendendo o Funcionamento -->
+  <div class="pg-section">
+    <h2>Como o Google AI Studio Trata Seus Dados</h2>
+    <p>A ativa&#231;&#227;o de uma conta de faturamento no Google Cloud &#233; fundamental para garantir a prote&#231;&#227;o dos dados. Por meio do cadastro de um cart&#227;o de cr&#233;dito, voc&#234; estabelece um contrato de servi&#231;o pago com o Google, o que altera significativamente o tratamento dos seus dados.</p>
+
+    <h3>Servi&#231;os Gratuitos vs. Servi&#231;os Pagos</h3>
+    <div class="compare">
+      <div class="compare-card">
+        <h4>&#9888; Sem Conta de Faturamento</h4>
+        <ul>
+          <li>O Google pode usar seus prompts e respostas para aprimorar seus produtos</li>
+          <li>Dados podem ser analisados por revisores humanos</li>
+          <li>Informa&#231;&#245;es usadas para desenvolver tecnologias de aprendizado de m&#225;quina</li>
+          <li>Menor prote&#231;&#227;o de privacidade dos dados</li>
+        </ul>
+      </div>
+      <div class="compare-card recommended">
+        <h4>&#10003; Com Conta de Faturamento (Recomendado)</h4>
+        <ul>
+          <li>O Google N&#195;O utiliza prompts nem respostas para treinamento</li>
+          <li>Dados processados conforme Adendo de Processamento de Dados</li>
+          <li>Armazenamento limitado apenas para detectar viola&#231;&#245;es</li>
+          <li>Maior garantia de privacidade e confidencialidade</li>
+          <li>Cumprimento de obriga&#231;&#245;es legais e regulamentares</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box highlight">
+      <h4>&#128161; Faturamento e Custos: Use sem Preocupa&#231;&#245;es</h4>
+      <p>Apenas registrar o cart&#227;o de cr&#233;dito e ativar a conta de faturamento n&#227;o gera custos. A cobran&#231;a s&#243; ocorrer&#225; se voc&#234; utilizar recursos que excedam a cota gratuita do Google AI Studio. Voc&#234; pode cadastrar o cart&#227;o para garantir a prote&#231;&#227;o de dados e continuar usando a cota gratuita normalmente.</p>
+    </div>
+
+    <div class="disclaimer">
+      <strong>Em resumo:</strong> ao transformar sua conta Google em uma conta faturada do Cloud, voc&#234; eleva o n&#237;vel de prote&#231;&#227;o de dados no AI Studio, garantindo que suas intera&#231;&#245;es com a intelig&#234;ncia artificial permane&#231;am confidenciais e n&#227;o sejam utilizadas para treinamento dos modelos do Google.
+    </div>
+  </div>
+
+  <!-- Passo a Passo -->
+  <div class="pg-section">
+    <h2>&#128295; Passo a Passo para Configura&#231;&#227;o</h2>
+    <p>Siga estas etapas para adequar sua conta:</p>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div>
+          <strong>Acesse o Google Cloud Console</strong>
+          <p>Entre no <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a> com a mesma conta Google que voc&#234; usa no AI Studio.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div>
+          <strong>Ative a Conta de Faturamento</strong>
+          <p>V&#225; em <strong>Faturamento</strong> e cadastre um cart&#227;o de cr&#233;dito. Isso ativa o modo de servi&#231;o pago, que protege seus dados. N&#227;o h&#225; cobran&#231;a autom&#225;tica.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div>
+          <strong>Verifique o Adendo de Processamento de Dados</strong>
+          <p>Confirme que o Adendo de Processamento est&#225; ativo na sua conta. Esse documento garante que o Google tratar&#225; os dados conforme legisla&#231;&#227;o de prote&#231;&#227;o de dados.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div>
+          <strong>Revise as Configura&#231;&#245;es de Privacidade</strong>
+          <p>Acesse as <a href="https://myaccount.google.com/data-and-privacy" target="_blank">configura&#231;&#245;es de privacidade</a> da sua conta Google e desative o compartilhamento de dados para melhoria de produtos, se aplicavel.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Links Essenciais -->
+  <div class="pg-section">
+    <h2>&#128279; Links Essenciais para Configura&#231;&#227;o</h2>
+    <p>Acesse diretamente as p&#225;ginas de configura&#231;&#227;o do Google:</p>
+    <div class="links-grid">
+      <div class="link-card">
+        <h4>Pol&#237;tica de Privacidade &mdash; Google AI Studio</h4>
+        <p>Termos e condi&#231;&#245;es de uso do Google AI Studio</p>
+        <a href="https://ai.google.dev/gemini-api/terms" target="_blank">Acessar &#8599;</a>
+      </div>
+      <div class="link-card">
+        <h4>Adendo de Processamento de Dados</h4>
+        <p>Documento que rege o tratamento de dados em servi&#231;os pagos</p>
+        <a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">Acessar &#8599;</a>
+      </div>
+      <div class="link-card">
+        <h4>Google AI Studio &mdash; Console</h4>
+        <p>Acesso direto ao Google AI Studio</p>
+        <a href="https://aistudio.google.com/" target="_blank">Acessar &#8599;</a>
+      </div>
+      <div class="link-card">
+        <h4>Google Cloud Billing</h4>
+        <p>Configurar conta de faturamento para prote&#231;&#227;o de dados</p>
+        <a href="https://console.cloud.google.com/billing" target="_blank">Acessar &#8599;</a>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      &#128161; <strong>Dica:</strong> Configure primeiro a conta faturada do Cloud para garantir m&#225;xima prote&#231;&#227;o de dados antes de usar o AI Studio.
+    </div>
+  </div>
+
+</div>
+
+<div class="pg-footer">
+  <div class="container">
+    Material de uso institucional interno &mdash; Em conformidade com a Resolu&#231;&#227;o CNJ n&#186; 615/2025.
+  </div>
+</div>
+
+</body>
+</html>

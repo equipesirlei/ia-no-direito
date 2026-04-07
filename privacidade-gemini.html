@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configura&#231;&#227;o de Privacidade &mdash; Gemini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--deep:#0f0a18;--plum:#1a1025;--plum-card:#1e1230;--violet:#6b2fa0;--violet-soft:#8b5fbf;--violet-dim:rgba(107,47,160,0.12);--rose:#d4a574;--rose-light:#e8c4a0;--rose-border:rgba(212,165,116,0.18);--rose-glow:rgba(212,165,116,0.10);--mauve:#a08bb5;--mauve-light:#c4b3d4;--white:#f5f0fa;--border:rgba(160,139,181,0.12);--red-soft:#e06060;--font-d:'Cormorant Garamond',Georgia,serif;--font-b:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);background:var(--deep);color:var(--mauve-light);line-height:1.7;-webkit-font-smoothing:antialiased}
+.container{max-width:860px;margin:0 auto;padding:0 24px}
+a{color:var(--rose);text-decoration:none}
+a:hover{color:var(--rose-light);text-decoration:underline}
+
+.top-bar{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.top-bar a{color:var(--mauve);font-size:.84rem;font-weight:500}
+.top-bar a:hover{color:var(--rose);text-decoration:none}
+.top-bar .sep{color:var(--border);font-size:.7rem}
+
+.pg-hero{padding:100px 0 48px;text-align:center}
+.pg-hero h1{font-family:var(--font-d);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:600;color:var(--white);margin-bottom:12px}
+.pg-hero p{font-size:.92rem;color:var(--mauve);max-width:600px;margin:0 auto}
+
+.pg-section{padding:48px 0;border-top:1px solid var(--border)}
+.pg-section h2{font-family:var(--font-d);font-size:1.6rem;font-weight:600;color:var(--white);margin-bottom:16px}
+.pg-section h3{font-family:var(--font-d);font-size:1.2rem;font-weight:600;color:var(--rose-light);margin:24px 0 10px}
+.pg-section p,.pg-section li{font-size:.88rem;color:var(--mauve-light);line-height:1.75;margin-bottom:10px}
+.pg-section ul,.pg-section ol{padding-left:20px;margin-bottom:16px}
+.pg-section li::marker{color:var(--rose)}
+
+.info-box{background:var(--plum-card);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin:20px 0}
+.info-box.highlight{border-color:var(--rose-border);background:linear-gradient(135deg,var(--plum-card),rgba(212,165,116,.03))}
+.info-box.warning{border-color:rgba(224,96,96,.25);background:linear-gradient(135deg,var(--plum-card),rgba(224,96,96,.03))}
+.info-box h4{font-family:var(--font-d);font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px}
+
+/* Topics grid */
+.topics{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:20px 0}
+.topic{background:var(--plum-card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.topic h4{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.topic p{font-size:.84rem}
+
+.step-list{counter-reset:steps}
+.step-item{counter-increment:steps;display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+.step-item::before{content:counter(steps);width:28px;height:28px;border-radius:50%;background:var(--violet-dim);border:1px solid var(--violet);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:var(--violet-soft);flex-shrink:0}
+
+.links-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.link-card{background:var(--plum-card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;transition:all .3s}
+.link-card:hover{border-color:var(--rose-border)}
+.link-card h4{font-size:.88rem;font-weight:600;color:var(--white);margin-bottom:4px}
+.link-card p{font-size:.76rem;color:var(--mauve);margin-bottom:8px}
+.link-card a{font-size:.76rem;font-weight:600}
+
+.disclaimer{background:var(--violet-dim);border:1px solid rgba(107,47,160,.2);border-radius:10px;padding:16px 20px;margin:24px 0;font-size:.82rem;color:var(--violet-soft)}
+
+.pg-footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;font-size:.75rem;color:rgba(160,139,181,.4)}
+
+@media(max-width:768px){.topics,.links-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="index.html">&#8592; Voltar</a>
+  <span class="sep">|</span>
+  <a href="privacidade-ai-studio.html">Privacidade do AI Studio &#8594;</a>
+</div>
+
+<div class="pg-hero">
+  <div class="container">
+    <h1>Configura&#231;&#227;o de Privacidade do<br>Gemini</h1>
+    <p>Riscos, configura&#231;&#245;es de seguran&#231;a e adequa&#231;&#227;o &#224; Resolu&#231;&#227;o CNJ n&#186; 615/2025 para uso do Gemini no &#226;mbito do Poder Judici&#225;rio.</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Resolução CNJ -->
+  <div class="pg-section">
+    <h2>&#128220; Resolu&#231;&#227;o CNJ n&#186; 615/2025 e os Riscos do Gemini</h2>
+    <p>A Resolu&#231;&#227;o n&#186; 615/2025 do CNJ estabelece, em seu art. 19, a proibi&#231;&#227;o do uso de modelos de linguagem (LLMs) que utilizem dados do Poder Judici&#225;rio para o seu pr&#243;prio treinamento. A norma visa assegurar a confidencialidade das informa&#231;&#245;es processuais e o uso &#233;tico da intelig&#234;ncia artificial no &#226;mbito da Justi&#231;a.</p>
+    <p>O Gemini, assistente da Google, apresenta particularidades quanto ao tratamento de dados que merecem aten&#231;&#227;o especial dos servidores e magistrados.</p>
+
+    <div class="topics">
+      <div class="topic">
+        <h4>&#128220; Resolu&#231;&#227;o CNJ 615/2025</h4>
+        <p>Normativa que estabelece diretrizes rigorosas para o uso de modelos de linguagem no Poder Judici&#225;rio, proibindo o treinamento de IA com dados processuais.</p>
+      </div>
+      <div class="topic">
+        <h4>&#9888;&#65039; Riscos do Gemini</h4>
+        <p>An&#225;lise dos perigos inerentes ao uso irrestrito do Gemini em dispositivos pessoais e profissionais de servidores da Justi&#231;a, especialmente quanto &#224; coleta e uso de dados.</p>
+      </div>
+      <div class="topic">
+        <h4>&#128295; Configura&#231;&#245;es de Seguran&#231;a</h4>
+        <p>Orienta&#231;&#245;es t&#233;cnicas detalhadas para adequar as configura&#231;&#245;es de privacidade do Gemini &#224;s exig&#234;ncias regulamentares do CNJ.</p>
+      </div>
+      <div class="topic">
+        <h4>&#127970; Impacto Institucional</h4>
+        <p>Como o uso inadequado de ferramentas de IA pode comprometer a seguran&#231;a institucional do Poder Judici&#225;rio e expor informa&#231;&#245;es processuais sens&#237;veis.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comunicado Google -->
+  <div class="pg-section">
+    <h2>&#128227; Comunicado da Google sobre Atividade do Gemini</h2>
+    <p>A Google comunicou que a funcionalidade do Gemini em todos os dispositivos Android ser&#225; ativada automaticamente, salvo se o usu&#225;rio tiver previamente desabilitado essa fun&#231;&#227;o. Dessa forma, servidores e magistrados que utilizem o Gemini devem verificar e configurar adequadamente as defini&#231;&#245;es de privacidade.</p>
+
+    <div class="info-box warning">
+      <h4>&#9888;&#65039; Aten&#231;&#227;o</h4>
+      <p>O Gemini pode coletar e processar dados de intera&#231;&#245;es automaticamente. &#201; fundamental desativar as funcionalidades de coleta de dados antes de utilizar a ferramenta para atividades jurisdicionais.</p>
+    </div>
+  </div>
+
+  <!-- Guia de Configuração -->
+  <div class="pg-section">
+    <h2>&#128295; Guia de Configura&#231;&#245;es de Privacidade</h2>
+    <p>Para adequar o Gemini &#224;s exig&#234;ncias de privacidade, siga as etapas abaixo:</p>
+
+    <h3>Desativar Atividade no Web e em Apps</h3>
+    <div class="step-list">
+      <div class="step-item">
+        <div>
+          <strong>Acesse as Configura&#231;&#245;es de Atividade</strong>
+          <p>V&#225; em <a href="https://myactivity.google.com/activitycontrols" target="_blank">Controles de Atividade</a> da sua conta Google. Voc&#234; ver&#225; op&#231;&#245;es como &quot;Atividade na Web e de apps&quot;.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div>
+          <strong>Desative a Atividade na Web e de Apps</strong>
+          <p>Clique em &quot;Desativar&quot; para impedir que o Google armazene suas pesquisas e atividades de navega&#231;&#227;o, incluindo intera&#231;&#245;es com o Gemini.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div>
+          <strong>Exclua o Hist&#243;rico de Atividades</strong>
+          <p>Em seguida, clique em &quot;Excluir atividade&quot; e selecione &quot;Todo o per&#237;odo&quot; para remover dados j&#225; coletados.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Configura&#231;&#245;es Espec&#237;ficas do Gemini</h3>
+    <div class="step-list">
+      <div class="step-item">
+        <div>
+          <strong>Acesse as Configura&#231;&#245;es do Gemini</strong>
+          <p>No aplicativo Gemini ou em <a href="https://gemini.google.com/advanced" target="_blank">gemini.google.com</a>, v&#225; em Configura&#231;&#245;es &gt; Privacidade.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div>
+          <strong>Desative &quot;Atividade do Gemini Apps&quot;</strong>
+          <p>Desative a op&#231;&#227;o que permite ao Google salvar suas conversas com o Gemini para melhoria de produtos.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div>
+          <strong>Revise as Extens&#245;es</strong>
+          <p>Verifique se extens&#245;es do Gemini (como acesso ao Gmail, Drive, Maps) est&#227;o desativadas para evitar coleta indireta de dados.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Remoção Completa -->
+  <div class="pg-section">
+    <h2>Remo&#231;&#227;o Completa do Gemini (M&#233;todo Avan&#231;ado)</h2>
+    <p>Caso deseje remover completamente a coleta de dados pelo Gemini, saiba que, mesmo ap&#243;s desativar as op&#231;&#245;es acima, o Google ainda pode coletar determinados dados por um per&#237;odo de at&#233; 72 horas, conforme sua justificativa de verificar novas tecnologias e melhorar seus produtos.</p>
+    <p>Para remo&#231;&#227;o mais abrangente:</p>
+    <ul>
+      <li>Desinstale ou desative o aplicativo Gemini do dispositivo m&#243;vel (Configura&#231;&#245;es &gt; Apps &gt; Gemini &gt; Desativar)</li>
+      <li>No Android, considere restaurar o assistente padr&#227;o anterior (Google Assistente) em vez do Gemini</li>
+      <li>Utilize as <a href="https://myaccount.google.com/data-and-privacy" target="_blank">configura&#231;&#245;es de privacidade</a> da conta para revisar e excluir dados armazenados</li>
+    </ul>
+
+    <div class="info-box highlight">
+      <h4>&#128161; Alternativa Recomendada</h4>
+      <p>Em vez de remover completamente o Gemini, a solu&#231;&#227;o mais pr&#225;tica &#233; desativar a coleta de dados (conforme os passos acima) e utilizar o <strong>Google AI Studio com conta de faturamento ativa</strong>, que oferece prote&#231;&#227;o contratual de dados. Veja o <a href="privacidade-ai-studio.html">guia do AI Studio</a>.</p>
+    </div>
+  </div>
+
+  <!-- Links -->
+  <div class="pg-section">
+    <h2>&#128279; Links Essenciais para Configura&#231;&#227;o</h2>
+    <div class="links-grid">
+      <div class="link-card">
+        <h4>Configura&#231;&#245;es do Gemini &mdash; Atividade e Dados</h4>
+        <p>Gerencie o que o Gemini armazena sobre suas intera&#231;&#245;es</p>
+        <a href="https://myactivity.google.com/product/gemini" target="_blank">Acessar &#8599;</a>
+      </div>
+      <div class="link-card">
+        <h4>Controles de Privacidade &mdash; Conta Google</h4>
+        <p>Configura&#231;&#245;es gerais de atividade da conta</p>
+        <a href="https://myactivity.google.com/activitycontrols" target="_blank">Acessar &#8599;</a>
+      </div>
+      <div class="link-card">
+        <h4>Configura&#231;&#245;es de Privacidade Google</h4>
+        <p>Revisar todas as configura&#231;&#245;es de privacidade da conta</p>
+        <a href="https://myaccount.google.com/data-and-privacy" target="_blank">Acessar &#8599;</a>
+      </div>
+      <div class="link-card">
+        <h4>Pol&#237;tica de Privacidade do Gemini</h4>
+        <p>Termos de uso e pol&#237;tica de dados do Gemini</p>
+        <a href="https://support.google.com/gemini/answer/13594961" target="_blank">Acessar &#8599;</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="pg-footer">
+  <div class="container">
+    Material de uso institucional interno &mdash; Em conformidade com a Resolu&#231;&#227;o CNJ n&#186; 615/2025.
+  </div>
+</div>
+
+</body>
+</html>
