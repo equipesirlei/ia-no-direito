@@ -113,6 +113,12 @@ section{padding:80px 0;position:relative;z-index:2}
 .ch-link:hover{gap:9px}
 .ch-link::after{content:'\2192'}
 
+/* Two-column chat layout */
+.ch-columns{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.ch-col-title{font-family:var(--font-d);font-size:1.15rem;font-weight:700;color:var(--rose-light);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.ch-col-list{display:flex;flex-direction:column;gap:12px}
+@media(max-width:768px){.ch-columns{grid-template-columns:1fr}}
+
 /* ══ TOOLS ══ */
 .tl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .tl-card{background:var(--plum-card);border:1px solid var(--border);border-radius:14px;padding:32px 24px;text-align:center;transition:all .4s cubic-bezier(.16,1,.3,1)}
@@ -200,8 +206,8 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
     <h1 class="au d1">Intelig&#234;ncia Artificial Aplicada &#224;<br><em>Justi&#231;a Estadual no Segundo Grau</em></h1>
     <p class="hero-sub au d2">Ferramentas de IA desenvolvidas para apoiar a atividade jurisdicional no &#226;mbito do Tribunal de Justi&#231;a, em conformidade com a Resolu&#231;&#227;o CNJ n&#186; 615/2025.</p>
     <div class="hero-stats au d3">
-      <div><span class="stn">5</span><span class="stl">Agentes IA</span></div>
-      <div><span class="stn">4</span><span class="stl">Chats</span></div>
+      <div><span class="stn">6</span><span class="stl">Agentes IA</span></div>
+      <div><span class="stn">34</span><span class="stl">Chats</span></div>
       <div><span class="stn">5</span><span class="stl">Ferramentas</span></div>
     </div>
   </div>
@@ -215,7 +221,13 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
       <h2 class="stitle">Por Onde Come&#231;ar</h2>
     </div>
     <div class="sline"></div>
-    <p class="onboard-text">Para a primeira semana, comece pelo Anonimizador de dados pessoais antes de submeter qualquer documento aos demais sistemas. Em seguida, experimente o chat especializado mais pr&#243;ximo da mat&#233;ria que voc&#234; est&#225; trabalhando no momento. As demais ferramentas se incorporam naturalmente ao fluxo conforme a necessidade aparece. Caso prefira entender primeiro como tudo se conecta, abra o acorde&#227;o abaixo.</p>
+    <p class="onboard-text">Antes de utilizar qualquer ferramenta de IA, recomendamos que voc&#234; acesse as orienta&#231;&#245;es sobre <strong>seguran&#231;a da informa&#231;&#227;o</strong> nos bot&#245;es do cabe&#231;alho desta p&#225;gina. A Resolu&#231;&#227;o CNJ n&#186; 615/2025 exige, em seu art. 19, &#167;3&#186;, III, que as empresas fornecedoras de LLMs observem padr&#245;es de prote&#231;&#227;o de dados, sendo <strong>vedado o uso dos dados fornecidos por usu&#225;rios do Poder Judici&#225;rio para treinamento ou aperfei&#231;oamento dos modelos</strong>. Al&#233;m disso, o inciso IV veda o uso de IA externa para processar documentos sigilosos ou protegidos por segredo de justi&#231;a, salvo quando devidamente anonimizados. Configurar corretamente a privacidade das suas contas &#233; o primeiro passo para atuar em conformidade com os fundamentos do art. 2&#186; e os princ&#237;pios do art. 3&#186; da Resolu&#231;&#227;o CNJ n&#186; 615/2025.</p>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+      <a href="privacidade-ai-studio.html" class="tl-btn">&#128274; AI Studio</a>
+      <a href="privacidade-gemini.html" class="tl-btn">&#128274; Gemini</a>
+      <a href="privacidade-chatgpt.html" class="tl-btn">&#128274; ChatGPT</a>
+      <a href="privacidade-claude.html" class="tl-btn">&#128274; Claude</a>
+    </div>
   </div>
 </section>
 
@@ -225,79 +237,9 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
     <div class="sh">
       <div class="stag">&#10022; Metodologia</div>
       <h2 class="stitle">Como Funcionam os Agentes de IA</h2>
-      <p class="sdesc">O fluxo de trabalho com os agentes segue etapas estruturadas para garantir qualidade e controle humano em cada decis&#227;o.</p>
+      <p class="sdesc">Cada agente &#233; um prompt fixo especializado em uma tarefa espec&#237;fica. Ao acess&#225;-lo, o usu&#225;rio interage diretamente com a IA, que j&#225; est&#225; configurada para executar a fun&#231;&#227;o descrita. O controle humano permanece em todas as etapas.</p>
     </div>
     <div class="sline"></div>
-
-    <div class="acc-header open" onclick="toggleAcc(this)">
-      <span class="acc-icon">&#9881;</span>
-      <h3>Etapas do Processo com o Agente</h3>
-      <span class="chevron">&#9660;</span>
-    </div>
-    <div class="acc-body open">
-      <div class="acc-steps">
-
-        <div class="step au d1">
-          <div class="step-num">1</div>
-          <div>
-            <div class="step-title">In&#237;cio da Intera&#231;&#227;o</div>
-            <p class="step-desc">O usu&#225;rio inicia a conversa com o agente, informando o que deseja realizar. Pode descrever a tarefa diretamente ou enviar o processo para an&#225;lise.</p>
-          </div>
-        </div>
-
-        <div class="step au d2">
-          <div class="step-num">2</div>
-          <div>
-            <div class="step-title">An&#225;lise do Processo</div>
-            <p class="step-desc">O agente realiza uma an&#225;lise detalhada do caso, identificando os fatos relevantes, as quest&#245;es jur&#237;dicas, as normas aplic&#225;veis e as poss&#237;veis conclus&#245;es. Todos os aspectos do processo s&#227;o examinados de forma sistem&#225;tica.</p>
-          </div>
-        </div>
-
-        <div class="step au d3">
-          <div class="step-num">3</div>
-          <div>
-            <div class="step-title">Autoriza&#231;&#227;o para Avan&#231;ar</div>
-            <p class="step-desc">Ap&#243;s a an&#225;lise, o agente solicita autoriza&#231;&#227;o para prosseguir. Caso haja algum ponto que o usu&#225;rio queira aprofundar, o agente aguarda a instru&#231;&#227;o. O controle permanece sempre com o ser humano.</p>
-          </div>
-        </div>
-
-        <div class="step au d4">
-          <div class="step-num">4</div>
-          <div>
-            <div class="step-title">Cria&#231;&#227;o do Esbo&#231;o</div>
-            <p class="step-desc">Com a aprova&#231;&#227;o, o agente elabora um esbo&#231;o da minuta &mdash; seja de decis&#227;o, despacho ou voto. O esbo&#231;o &#233; apresentado para revis&#227;o antes de qualquer finaliza&#231;&#227;o.</p>
-          </div>
-        </div>
-
-        <div class="step au d5">
-          <div class="step-num">5</div>
-          <div>
-            <div class="step-title">Revis&#227;o e Aprova&#231;&#227;o</div>
-            <p class="step-desc">O usu&#225;rio revisa o esbo&#231;o e pode fornecer feedback sobre pontos que precisam de ajuste. O agente incorpora as orienta&#231;&#245;es e apresenta a vers&#227;o corrigida.</p>
-          </div>
-        </div>
-
-        <div class="step au d6">
-          <div class="step-num">6</div>
-          <div>
-            <div class="step-title">Documento Final</div>
-            <p class="step-desc">Ap&#243;s a aprova&#231;&#227;o do esbo&#231;o, o agente finaliza o documento de forma completa e definitiva, pronto para confer&#234;ncia final pelo gabinete.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Resumo -->
-    <div class="resumo-box au" style="margin-top:32px">
-      <h3>Resumo do Processo:</h3>
-      <ol>
-        <li>An&#225;lise detalhada do processo</li>
-        <li>Cria&#231;&#227;o de um esbo&#231;o da minuta</li>
-        <li>Finaliza&#231;&#227;o do documento, ap&#243;s confirma&#231;&#227;o de aprova&#231;&#227;o</li>
-      </ol>
-    </div>
-
   </div>
 </section>
 
@@ -352,6 +294,14 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
         <a href="https://gemini.google.com/gem/1yW2XZF-C2bP7l-aqhi-qIpASZgFyDWT2?usp=sharing" class="ag-link" target="_blank">Acessar</a>
       </div>
 
+      <div class="ag-card au d6">
+        <span class="ag-icon">&#9989;</span>
+        <h3 class="ag-name">Confer&#234;ncia de Coer&#234;ncia</h3>
+        <div class="ag-role">Dispositivo, Ementa e Ac&#243;rd&#227;o</div>
+        <p class="ag-desc">Realiza a confer&#234;ncia de coer&#234;ncia interna de pe&#231;as decis&#243;rias (voto e ac&#243;rd&#227;os) antes da inser&#231;&#227;o dos arquivos em pauta virtual ou presencial, verificando consist&#234;ncia entre dispositivo, ementa e fundamenta&#231;&#227;o.</p>
+        <a href="https://chatgpt.com/g/g-68c19914c5b48191bb73925ad92d7642-conferencia-dispositivo-ementa-acordao" class="ag-link" target="_blank">Acessar</a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -365,32 +315,63 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
       <p class="sdesc">Consulta doutrin&#225;ria com IA sobre acervos de livros e legisla&#231;&#227;o indexados por &#225;rea do Direito.</p>
     </div>
     <div class="sline"></div>
-    <div class="ch-grid">
+    <div class="ch-columns">
 
-      <div class="ch-card au d1">
-        <span class="ch-sources">65 fontes</span>
-        <h3 class="ch-title">Processo Civil &mdash; Parte Especial</h3>
-        <a href="https://notebooklm.google.com/notebook/c37722c9-e67a-4358-8dec-bc2557a53c4f" class="ch-link" target="_blank">Acessar Chat</a>
+      <!-- DIREITO PRIVADO -->
+      <div>
+        <div class="ch-col-title">&#9878; Direito Privado</div>
+        <div class="ch-col-list">
+          <div class="ch-card au d1"><h3 class="ch-title">&#128220; Direito Civil</h3><a href="https://notebooklm.google.com/notebook/162ddc43-d9ba-4196-9ab6-72adfd30a26a" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d2"><h3 class="ch-title">&#128221; Contratos e Obriga&#231;&#245;es</h3><a href="https://notebooklm.google.com/notebook/8f17517d-1593-4d54-b4f4-04cff444db61" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d3"><h3 class="ch-title">&#127968; Direitos Reais e Possess&#243;rios</h3><a href="https://notebooklm.google.com/notebook/952b9a63-ec51-4397-93e8-01b3191cb1cf" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d4"><h3 class="ch-title">&#128106; Fam&#237;lia e Sucess&#245;es</h3><a href="https://notebooklm.google.com/notebook/033daf95-61c6-4a07-b133-a7ed40ffa0a7" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d5"><h3 class="ch-title">&#127869; Execu&#231;&#227;o de Alimentos</h3><a href="https://notebooklm.google.com/notebook/17e47337-5be2-40d9-8d29-404db6175267" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d6"><h3 class="ch-title">&#128722; Direito do Consumidor</h3><a href="https://notebooklm.google.com/notebook/39afd93d-3648-447a-b98f-6225dd4b837c" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d1"><h3 class="ch-title">&#127974; Direito Banc&#225;rio</h3><a href="https://notebooklm.google.com/notebook/0659e6fd-3727-44e2-9216-1cd6fbc73010" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d2"><h3 class="ch-title">&#128188; Empresarial e Falimentar</h3><a href="https://notebooklm.google.com/notebook/e043c2c3-6c19-4507-b765-2fdb31ea23bb" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d3"><h3 class="ch-title">&#128273; A&#231;&#245;es de Loca&#231;&#227;o</h3><a href="https://notebooklm.google.com/notebook/5a6a1c77-dd13-48de-9899-5746af34e023" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d4"><h3 class="ch-title">&#128737; Direito Securit&#225;rio</h3><a href="https://notebooklm.google.com/notebook/0771d336-648f-410f-ab86-056cbecbedc6" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d5"><h3 class="ch-title">&#127970; Direito Condominial</h3><a href="https://notebooklm.google.com/notebook/2a852eec-0d25-48c5-873f-724423fd070a" class="ch-link" target="_blank">Acessar Chat</a></div>
+        </div>
       </div>
 
-      <div class="ch-card au d2">
-        <span class="ch-sources">64 fontes</span>
-        <h3 class="ch-title">Processo Civil &mdash; Parte Geral</h3>
-        <a href="https://notebooklm.google.com/notebook/36ba5aab-814a-4ea4-81cd-063bdd7086d1" class="ch-link" target="_blank">Acessar Chat</a>
+      <!-- DIREITO PÚBLICO -->
+      <div>
+        <div class="ch-col-title">&#127963; Direito P&#250;blico</div>
+        <div class="ch-col-list">
+          <div class="ch-card au d1"><h3 class="ch-title">&#128218; Direito Constitucional</h3><a href="https://notebooklm.google.com/notebook/2f24713f-7057-42bb-8885-8cb55da628a8" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d2"><h3 class="ch-title">&#127963; Direito Administrativo</h3><a href="https://notebooklm.google.com/notebook/c1f90e16-34e3-4a73-875c-b278e2eafb1c" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d3"><h3 class="ch-title">&#128176; Direito Tribut&#225;rio</h3><a href="https://notebooklm.google.com/notebook/b2241814-0bda-4920-8cfa-fe8a759956ac" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d4"><h3 class="ch-title">&#127979; Fazenda P&#250;blica em Ju&#237;zo</h3><a href="https://notebooklm.google.com/notebook/956d2b1f-ccee-4b1a-8a34-02a9a3f94797" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d5"><h3 class="ch-title">&#127795; Direito Ambiental</h3><a href="https://notebooklm.google.com/notebook/961e3d0f-1179-4fc3-88b3-e6a149fdbc20" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d6"><h3 class="ch-title">&#127959; Direito Urban&#237;stico</h3><a href="https://notebooklm.google.com/notebook/2a6ae57a-04fe-4d70-b7c7-e3b0f402e336" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d1"><h3 class="ch-title">&#128116; Direito Previdenci&#225;rio</h3><a href="https://notebooklm.google.com/notebook/bf38df18-9c70-411f-8954-e33538d9feb2" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d2"><h3 class="ch-title">&#127973; Direito da Sa&#250;de</h3><a href="https://notebooklm.google.com/notebook/589db28b-e9ba-4b5a-b7e0-3fda05bf22ac" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d3"><h3 class="ch-title">&#128499; Direito Eleitoral</h3><a href="https://notebooklm.google.com/notebook/2a6fb97f-cad9-4107-9d1d-52beb4b8f804" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d4"><h3 class="ch-title">&#128101; Direito Coletivo</h3><a href="https://notebooklm.google.com/notebook/546a2bdc-40cf-433c-a76d-f3527434d15d" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d5"><h3 class="ch-title">&#128272; Prote&#231;&#227;o de Dados</h3><a href="https://notebooklm.google.com/notebook/8e460241-82e0-44d1-bdfa-c7d615e7e889" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d6"><h3 class="ch-title">&#128203; Direito Registral e Notarial</h3><a href="https://notebooklm.google.com/notebook/95208ce6-7ee2-4d83-b289-242e4d4a2b62" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d1"><h3 class="ch-title">&#9878; Jurisdi&#231;&#227;o e Autocomposi&#231;&#227;o</h3><a href="https://notebooklm.google.com/notebook/02f4ba64-dc4a-4a5c-97eb-e71bc82a3564" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d2"><h3 class="ch-title">&#128118; Crian&#231;a e Adolescente</h3><a href="https://notebooklm.google.com/notebook/36fb3a81-fb1f-47ac-a2a2-823578de5c46" class="ch-link" target="_blank">Acessar Chat</a></div>
+          <div class="ch-card au d3"><h3 class="ch-title">&#128119; Direito do Trabalho</h3><a href="https://notebooklm.google.com/notebook/6786fca3-acd9-41b8-a83d-5ff1bfec8040" class="ch-link" target="_blank">Acessar Chat</a></div>
+        </div>
       </div>
 
-      <div class="ch-card au d3">
-        <span class="ch-sources">34 fontes</span>
-        <h3 class="ch-title">Direito Civil</h3>
-        <a href="https://notebooklm.google.com/notebook/162ddc43-d9ba-4196-9ab6-72adfd30a26a" class="ch-link" target="_blank">Acessar Chat</a>
-      </div>
+    </div>
 
-      <div class="ch-card au d4">
-        <span class="ch-sources">16 fontes</span>
-        <h3 class="ch-title">Direito Tribut&#225;rio</h3>
-        <a href="https://notebooklm.google.com/notebook/b2241814-0bda-4920-8cfa-fe8a759956ac" class="ch-link" target="_blank">Acessar Chat</a>
+    <!-- PROCESSUAL E INTERSECÇÕES -->
+    <div style="margin-top:32px">
+      <div class="ch-col-title" style="text-align:center;border-bottom:none;justify-content:center">&#128214; Direito Processual e Intersec&#231;&#245;es do Conhecimento</div>
+      <div class="ch-grid" style="margin-top:12px">
+        <div class="ch-card au d1"><h3 class="ch-title">&#128214; Processo Civil &mdash; Parte Geral</h3><a href="https://notebooklm.google.com/notebook/36ba5aab-814a-4ea4-81cd-063bdd7086d1" class="ch-link" target="_blank">Acessar Chat</a></div>
+        <div class="ch-card au d2"><h3 class="ch-title">&#128213; Processo Civil &mdash; Parte Especial</h3><a href="https://notebooklm.google.com/notebook/c37722c9-e67a-4358-8dec-bc2557a53c4f" class="ch-link" target="_blank">Acessar Chat</a></div>
+        <div class="ch-card au d3"><h3 class="ch-title">&#128209; CPC Comentado</h3><a href="https://notebooklm.google.com/notebook/cf76f0cd-4462-4b33-84db-84d438af75f3" class="ch-link" target="_blank">Acessar Chat</a></div>
+        <div class="ch-card au d4"><h3 class="ch-title">&#9879; Execu&#231;&#227;o Judicial</h3><a href="https://notebooklm.google.com/notebook/cd353680-f14c-4cd2-af64-1a22dcee749e" class="ch-link" target="_blank">Acessar Chat</a></div>
+        <div class="ch-card au d5"><h3 class="ch-title">&#128196; Procedimentos Especiais</h3><a href="https://notebooklm.google.com/notebook/c4f7550c-8883-445f-8afc-5d5c2693a540" class="ch-link" target="_blank">Acessar Chat</a></div>
+        <div class="ch-card au d6"><h3 class="ch-title">&#127981; A&#231;&#245;es Origin&#225;rias em Tribunais</h3><a href="https://notebooklm.google.com/notebook/83175403-e0fe-40b5-85c1-11864bbb7851" class="ch-link" target="_blank">Acessar Chat</a></div>
+        <div class="ch-card au d1"><h3 class="ch-title">&#9892; G&#234;nero e Igualdade Racial</h3><a href="https://notebooklm.google.com/notebook/488d41fa-1aef-4d7c-96d6-e37283e5a7b9" class="ch-link" target="_blank">Acessar Chat</a></div>
+        <div class="ch-card au d2"><h3 class="ch-title">&#128161; Filosofia do Direito e Hermen&#234;utica</h3><a href="https://notebooklm.google.com/notebook/9592aad8-fdc4-4505-8f3b-2adc0c1b99c9" class="ch-link" target="_blank">Acessar Chat</a></div>
       </div>
-
     </div>
   </div>
 </section>
@@ -416,7 +397,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
       <div class="tl-card au d2">
         <span class="tl-icon">&#128269;</span>
         <h3 class="tl-title">OCR de PDF</h3>
-        <p class="tl-desc">Converte PDFs escaneados em documentos pesquis&#225;veis com texto selecion&#225;vel.</p>
+        <p class="tl-desc">Aplica reconhecimento &#243;ptico de caracteres (OCR) ao PDF, garantindo que todas as camadas de texto sejam reconstru&#237;das corretamente. Recomenda-se passar o arquivo por esta ferramenta <strong>antes</strong> de convert&#234;-lo em TXT, para que a extra&#231;&#227;o de texto seja completa e fiel ao documento original.</p>
         <a href="https://tools.pdf24.org/pt/ocr-pdf" class="tl-btn" target="_blank">Acessar</a>
       </div>
 
@@ -431,7 +412,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
         <span class="tl-icon">&#127908;</span>
         <h3 class="tl-title">Transcritor de Audi&#234;ncia</h3>
         <p class="tl-desc">Transcri&#231;&#227;o autom&#225;tica de audi&#234;ncias judiciais com identifica&#231;&#227;o de falantes por an&#225;lise contextual.</p>
-        <a href="#" class="tl-btn disabled">Em breve</a>
+        <a href="https://projudi-ia-servico.tjgo.jus.br/transcript" class="tl-btn" target="_blank">Acessar</a>
       </div>
 
       <div class="tl-card au d5">
@@ -453,12 +434,6 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
 </footer>
 
 <script>
-// Accordion
-function toggleAcc(el){
-  el.classList.toggle('open');
-  const body=el.nextElementSibling;
-  body.classList.toggle('open');
-}
 // Scroll animations
 const obs=new IntersectionObserver(e=>{
   e.forEach(en=>{if(en.isIntersecting){en.target.style.animationPlayState='running';obs.unobserve(en.target)}})
