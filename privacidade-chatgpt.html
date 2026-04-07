@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configura&#231;&#227;o de Privacidade &mdash; ChatGPT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--deep:#0f0a18;--plum:#1a1025;--plum-card:#1e1230;--violet:#6b2fa0;--violet-soft:#8b5fbf;--violet-dim:rgba(107,47,160,0.12);--rose:#d4a574;--rose-light:#e8c4a0;--rose-border:rgba(212,165,116,0.18);--rose-glow:rgba(212,165,116,0.10);--mauve:#a08bb5;--mauve-light:#c4b3d4;--white:#f5f0fa;--border:rgba(160,139,181,0.12);--font-d:'Cormorant Garamond',Georgia,serif;--font-b:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);background:var(--deep);color:var(--mauve-light);line-height:1.7;-webkit-font-smoothing:antialiased}
+.container{max-width:860px;margin:0 auto;padding:0 24px}
+a{color:var(--rose);text-decoration:none}
+a:hover{color:var(--rose-light);text-decoration:underline}
+.top-bar{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.top-bar a{color:var(--mauve);font-size:.84rem;font-weight:500}
+.top-bar a:hover{color:var(--rose);text-decoration:none}
+.top-bar .sep{color:var(--border);font-size:.7rem}
+.pg-hero{padding:100px 0 48px;text-align:center}
+.pg-hero h1{font-family:var(--font-d);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:600;color:var(--white);margin-bottom:12px}
+.pg-hero p{font-size:.92rem;color:var(--mauve);max-width:600px;margin:0 auto}
+.pg-section{padding:48px 0;border-top:1px solid var(--border)}
+.pg-section h2{font-family:var(--font-d);font-size:1.6rem;font-weight:600;color:var(--white);margin-bottom:16px}
+.pg-section h3{font-family:var(--font-d);font-size:1.2rem;font-weight:600;color:var(--rose-light);margin:24px 0 10px}
+.pg-section p,.pg-section li{font-size:.88rem;color:var(--mauve-light);line-height:1.75;margin-bottom:10px}
+.pg-section ul,.pg-section ol{padding-left:20px;margin-bottom:16px}
+.pg-section li::marker{color:var(--rose)}
+.info-box{background:var(--plum-card);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin:20px 0}
+.info-box.highlight{border-color:var(--rose-border);background:linear-gradient(135deg,var(--plum-card),rgba(212,165,116,.03))}
+.info-box.warning{border-color:rgba(224,96,96,.25);background:linear-gradient(135deg,var(--plum-card),rgba(224,96,96,.03))}
+.info-box h4{font-family:var(--font-d);font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.compare-card{background:var(--plum-card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.compare-card.recommended{border-color:var(--rose-border)}
+.compare-card h4{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.compare-card ul{list-style:none;padding:0}
+.compare-card li{padding:4px 0;font-size:.84rem;position:relative;padding-left:16px}
+.compare-card li::before{content:'\2022';position:absolute;left:0;color:var(--mauve)}
+.compare-card.recommended li::before{color:var(--rose)}
+.step-list{counter-reset:steps}
+.step-item{counter-increment:steps;display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+.step-item::before{content:counter(steps);width:28px;height:28px;border-radius:50%;background:var(--violet-dim);border:1px solid var(--violet);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:var(--violet-soft);flex-shrink:0}
+.links-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.link-card{background:var(--plum-card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;transition:all .3s}
+.link-card:hover{border-color:var(--rose-border)}
+.link-card h4{font-size:.88rem;font-weight:600;color:var(--white);margin-bottom:4px}
+.link-card p{font-size:.76rem;color:var(--mauve);margin-bottom:8px}
+.link-card a{font-size:.76rem;font-weight:600}
+.disclaimer{background:var(--violet-dim);border:1px solid rgba(107,47,160,.2);border-radius:10px;padding:16px 20px;margin:24px 0;font-size:.82rem;color:var(--violet-soft)}
+.pg-footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;font-size:.75rem;color:rgba(160,139,181,.4)}
+@media(max-width:768px){.compare,.links-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="index.html">&#8592; Voltar</a>
+  <span class="sep">|</span>
+  <a href="privacidade-claude.html">Privacidade do Claude &#8594;</a>
+</div>
+
+<div class="pg-hero">
+  <div class="container">
+    <h1>Configura&#231;&#227;o de Privacidade do<br>ChatGPT (OpenAI)</h1>
+    <p>Como configurar sua conta na OpenAI para impedir que dados judiciais sejam usados no treinamento dos modelos, em conformidade com a Resolu&#231;&#227;o CNJ n&#186; 615/2025.</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="pg-section">
+    <h2>&#128220; Contexto Regulat&#243;rio</h2>
+    <p>A Resolu&#231;&#227;o CNJ n&#186; 615/2025 pro&#237;be o uso de modelos de linguagem que utilizem dados do Poder Judici&#225;rio para treinamento pr&#243;prio. O ChatGPT, por padr&#227;o, pode utilizar as conversas dos usu&#225;rios para aprimorar seus modelos &mdash; a menos que o usu&#225;rio desative essa op&#231;&#227;o expressamente.</p>
+
+    <div class="info-box warning">
+      <h4>&#9888;&#65039; Aten&#231;&#227;o</h4>
+      <p>Na configura&#231;&#227;o padr&#227;o, o ChatGPT armazena todas as conversas e pode utiliz&#225;-las para treinamento. Servidores e magistrados devem desativar essa funcionalidade <strong>antes</strong> de submeter qualquer dado processual.</p>
+    </div>
+  </div>
+
+  <div class="pg-section">
+    <h2>Planos Gratuito vs. Pago: Diferen&#231;as na Prote&#231;&#227;o</h2>
+    <div class="compare">
+      <div class="compare-card">
+        <h4>&#9888; Plano Gratuito (padr&#227;o)</h4>
+        <ul>
+          <li>Conversas podem ser usadas para treinamento dos modelos</li>
+          <li>Dados revisados por equipes da OpenAI para seguran&#231;a</li>
+          <li>Hist&#243;rico de conversas armazenado nos servidores</li>
+          <li>Menor controle sobre reten&#231;&#227;o de dados</li>
+        </ul>
+      </div>
+      <div class="compare-card recommended">
+        <h4>&#10003; Plano Team / Enterprise (Recomendado)</h4>
+        <ul>
+          <li>Dados N&#195;O utilizados para treinamento por padr&#227;o</li>
+          <li>Conformidade com SOC 2 Type II</li>
+          <li>Controle administrativo sobre reten&#231;&#227;o de dados</li>
+          <li>Criptografia em tr&#226;nsito e em repouso</li>
+          <li>Workspace isolado com pol&#237;ticas de seguran&#231;a</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box highlight">
+      <h4>&#128161; Alternativa para o Plano Gratuito</h4>
+      <p>Mesmo no plano gratuito, &#233; poss&#237;vel desativar o uso de dados para treinamento. A prote&#231;&#227;o n&#227;o &#233; t&#227;o robusta quanto no plano Enterprise, mas &#233; suficiente para uso b&#225;sico com dados n&#227;o sens&#237;veis. Para dados processuais, o plano Team ou Enterprise &#233; o recomendado.</p>
+    </div>
+  </div>
+
+  <div class="pg-section">
+    <h2>&#128295; Passo a Passo: Desativar Treinamento</h2>
+
+    <h3>M&#233;todo 1: Via Configura&#231;&#245;es do ChatGPT</h3>
+    <div class="step-list">
+      <div class="step-item">
+        <div>
+          <strong>Acesse as Configura&#231;&#245;es</strong>
+          <p>No ChatGPT, clique no seu nome (canto inferior esquerdo) &gt; <strong>Settings</strong>.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div>
+          <strong>V&#225; em Data Controls</strong>
+          <p>Na barra lateral, clique em <strong>Data Controls</strong>.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div>
+          <strong>Desative &quot;Improve the model for everyone&quot;</strong>
+          <p>Desative a op&#231;&#227;o que permite &#224; OpenAI usar suas conversas para melhorar os modelos. A altera&#231;&#227;o &#233; imediata.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>M&#233;todo 2: Via Portal de Privacidade da OpenAI</h3>
+    <div class="step-list">
+      <div class="step-item">
+        <div>
+          <strong>Acesse o Privacy Portal</strong>
+          <p>V&#225; em <a href="https://privacy.openai.com/" target="_blank">privacy.openai.com</a> e fa&#231;a login com sua conta.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div>
+          <strong>Solicite Exclus&#227;o de Dados</strong>
+          <p>Voc&#234; pode solicitar a exclus&#227;o de dados pessoais e do hist&#243;rico de conversas diretamente pelo portal.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Chats Tempor&#225;rios</h3>
+    <p>O ChatGPT oferece o modo <strong>&quot;Temporary Chat&quot;</strong>, que n&#227;o salva o hist&#243;rico e n&#227;o usa os dados para treinamento. Para ativ&#225;-lo, clique no menu do modelo (topo da conversa) e selecione &quot;Temporary Chat&quot;. Ideal para consultas pontuais com dados sens&#237;veis.</p>
+  </div>
+
+  <div class="pg-section">
+    <h2>&#128279; Links Essenciais</h2>
+    <div class="links-grid">
+      <div class="link-card">
+        <h4>Configura&#231;&#245;es do ChatGPT</h4>
+        <p>Acesse Data Controls para desativar treinamento</p>
+        <a href="https://chatgpt.com/#settings/DataControls" target="_blank">Acessar &#8599;</a>
+      </div>
+      <div class="link-card">
+        <h4>Privacy Portal da OpenAI</h4>
+        <p>Solicitar exclus&#227;o de dados e gerenciar privacidade</p>
+        <a href="https://privacy.openai.com/" target="_blank">Acessar &#8599;</a>
+      </div>
+      <div class="link-card">
+        <h4>Pol&#237;tica de Uso de Dados &mdash; OpenAI</h4>
+        <p>Documenta&#231;&#227;o oficial sobre como os dados s&#227;o tratados</p>
+        <a href="https://openai.com/policies/privacy-policy" target="_blank">Acessar &#8599;</a>
+      </div>
+      <div class="link-card">
+        <h4>OpenAI Enterprise Privacy</h4>
+        <p>Detalhes sobre prote&#231;&#227;o de dados nos planos corporativos</p>
+        <a href="https://openai.com/enterprise-privacy" target="_blank">Acessar &#8599;</a>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      &#128161; <strong>Recomenda&#231;&#227;o:</strong> Desative o treinamento com dados imediatamente ap&#243;s criar sua conta. Para uso institucional com dados processuais, avalie a ado&#231;&#227;o do plano Team ou Enterprise.
+    </div>
+  </div>
+
+</div>
+
+<div class="pg-footer">
+  <div class="container">
+    Material de uso institucional interno &mdash; Em conformidade com a Resolu&#231;&#227;o CNJ n&#186; 615/2025.
+  </div>
+</div>
+
+</body>
+</html>

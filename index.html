@@ -37,8 +37,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(15,10,24
 .hdr-center{display:flex;gap:28px}
 .hdr-center a{color:var(--mauve);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .3s}
 .hdr-center a:hover{color:var(--rose)}
-.hdr-right{display:flex;gap:12px;align-items:center}
-.hdr-right a{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border:1px solid var(--border);border-radius:8px;color:var(--mauve);text-decoration:none;font-size:.72rem;font-weight:500;transition:all .3s}
+.hdr-right{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.hdr-right a{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border:1px solid var(--border);border-radius:6px;color:var(--mauve);text-decoration:none;font-size:.64rem;font-weight:500;transition:all .3s;white-space:nowrap}
 .hdr-right a:hover{border-color:var(--rose-border);color:var(--rose)}
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}
 .hamburger span{width:20px;height:1.5px;background:var(--mauve-light);border-radius:2px}
@@ -168,8 +168,10 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
       <a href="#ferramentas">Ferramentas</a>
     </div>
     <div class="hdr-right">
-      <a href="privacidade-ai-studio.html">&#128274; Privacidade do Google AI Studio</a>
-      <a href="privacidade-gemini.html">&#128274; Privacidade do Gemini</a>
+      <a href="privacidade-ai-studio.html">&#128274; AI Studio</a>
+      <a href="privacidade-gemini.html">&#128274; Gemini</a>
+      <a href="privacidade-chatgpt.html">&#128274; ChatGPT</a>
+      <a href="privacidade-claude.html">&#128274; Claude</a>
     </div>
     <button class="hamburger" onclick="document.getElementById('mobNav').classList.toggle('open')">
       <span></span><span></span><span></span>
@@ -179,8 +181,10 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
     <a href="#agentes">Agentes</a>
     <a href="#chats">Chats Especializados</a>
     <a href="#ferramentas">Ferramentas</a>
-    <a href="privacidade-ai-studio.html">Privacidade do AI Studio</a>
-    <a href="privacidade-gemini.html">Privacidade do Gemini</a>
+    <a href="privacidade-ai-studio.html">Privacidade AI Studio</a>
+    <a href="privacidade-gemini.html">Privacidade Gemini</a>
+    <a href="privacidade-chatgpt.html">Privacidade ChatGPT</a>
+    <a href="privacidade-claude.html">Privacidade Claude</a>
   </div>
 </header>
 
@@ -196,7 +200,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
     <h1 class="au d1">Intelig&#234;ncia Artificial Aplicada &#224;<br><em>Justi&#231;a Estadual no Segundo Grau</em></h1>
     <p class="hero-sub au d2">Ferramentas de IA desenvolvidas para apoiar a atividade jurisdicional no &#226;mbito do Tribunal de Justi&#231;a, em conformidade com a Resolu&#231;&#227;o CNJ n&#186; 615/2025.</p>
     <div class="hero-stats au d3">
-      <div><span class="stn">4</span><span class="stl">Agentes IA</span></div>
+      <div><span class="stn">5</span><span class="stl">Agentes IA</span></div>
       <div><span class="stn">4</span><span class="stl">Chats</span></div>
       <div><span class="stn">5</span><span class="stl">Ferramentas</span></div>
     </div>
@@ -340,6 +344,14 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
         <a href="https://chatgpt.com/g/g-686d36093170819180f46aea5ebe54f8-nia-nomenclatura-de-arquivos-gab-sirlei" class="ag-link" target="_blank">Acessar</a>
       </div>
 
+      <div class="ag-card au d5">
+        <span class="ag-icon">&#128209;</span>
+        <h3 class="ag-name">Analista de Autos</h3>
+        <div class="ag-role">Relat&#243;rio T&#233;cnico Recursal</div>
+        <p class="ag-desc">Examina autos recursais e produz relat&#243;rio t&#233;cnico que subsidia voto de relatoria, identificando problemas concretos com lastro probat&#243;rio nos autos e indicando solu&#231;&#245;es jur&#237;dicas vi&#225;veis em sede recursal.</p>
+        <a href="https://gemini.google.com/gem/1yW2XZF-C2bP7l-aqhi-qIpASZgFyDWT2?usp=sharing" class="ag-link" target="_blank">Acessar</a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -425,8 +437,8 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
       <div class="tl-card au d5">
         <span class="tl-icon">&#10024;</span>
         <h3 class="tl-title">Criador de Prompt</h3>
-        <p class="tl-desc">Assistente para constru&#231;&#227;o de prompts estruturados, otimizando a intera&#231;&#227;o com modelos de IA generativa.</p>
-        <a href="#" class="tl-btn disabled">Em breve</a>
+        <p class="tl-desc">Arquiteto de prompts de IA especialista em desenvolver instru&#231;&#245;es complexas e modulares, adaptadas ao contexto fornecido pelo usu&#225;rio.</p>
+        <a href="https://gemini.google.com/gem/10tlpiV6qDYMO3QgU00I_yGQnjufylV-v?usp=sharing" class="tl-btn" target="_blank">Acessar</a>
       </div>
 
     </div>

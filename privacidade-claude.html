@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configura&#231;&#227;o de Privacidade &mdash; Claude (Anthropic)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--deep:#0f0a18;--plum:#1a1025;--plum-card:#1e1230;--violet:#6b2fa0;--violet-soft:#8b5fbf;--violet-dim:rgba(107,47,160,0.12);--rose:#d4a574;--rose-light:#e8c4a0;--rose-border:rgba(212,165,116,0.18);--rose-glow:rgba(212,165,116,0.10);--mauve:#a08bb5;--mauve-light:#c4b3d4;--white:#f5f0fa;--border:rgba(160,139,181,0.12);--green-soft:#5cb85c;--font-d:'Cormorant Garamond',Georgia,serif;--font-b:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);background:var(--deep);color:var(--mauve-light);line-height:1.7;-webkit-font-smoothing:antialiased}
+.container{max-width:860px;margin:0 auto;padding:0 24px}
+a{color:var(--rose);text-decoration:none}
+a:hover{color:var(--rose-light);text-decoration:underline}
+.top-bar{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.top-bar a{color:var(--mauve);font-size:.84rem;font-weight:500}
+.top-bar a:hover{color:var(--rose);text-decoration:none}
+.top-bar .sep{color:var(--border);font-size:.7rem}
+.pg-hero{padding:100px 0 48px;text-align:center}
+.pg-hero h1{font-family:var(--font-d);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:600;color:var(--white);margin-bottom:12px}
+.pg-hero p{font-size:.92rem;color:var(--mauve);max-width:600px;margin:0 auto}
+.pg-section{padding:48px 0;border-top:1px solid var(--border)}
+.pg-section h2{font-family:var(--font-d);font-size:1.6rem;font-weight:600;color:var(--white);margin-bottom:16px}
+.pg-section h3{font-family:var(--font-d);font-size:1.2rem;font-weight:600;color:var(--rose-light);margin:24px 0 10px}
+.pg-section p,.pg-section li{font-size:.88rem;color:var(--mauve-light);line-height:1.75;margin-bottom:10px}
+.pg-section ul,.pg-section ol{padding-left:20px;margin-bottom:16px}
+.pg-section li::marker{color:var(--rose)}
+.info-box{background:var(--plum-card);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin:20px 0}
+.info-box.highlight{border-color:var(--rose-border);background:linear-gradient(135deg,var(--plum-card),rgba(212,165,116,.03))}
+.info-box.good{border-color:rgba(92,184,92,.25);background:linear-gradient(135deg,var(--plum-card),rgba(92,184,92,.03))}
+.info-box h4{font-family:var(--font-d);font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.compare-card{background:var(--plum-card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.compare-card.recommended{border-color:var(--rose-border)}
+.compare-card h4{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.compare-card ul{list-style:none;padding:0}
+.compare-card li{padding:4px 0;font-size:.84rem;position:relative;padding-left:16px}
+.compare-card li::before{content:'\2022';position:absolute;left:0;color:var(--mauve)}
+.compare-card.recommended li::before{color:var(--rose)}
+.step-list{counter-reset:steps}
+.step-item{counter-increment:steps;display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+.step-item::before{content:counter(steps);width:28px;height:28px;border-radius:50%;background:var(--violet-dim);border:1px solid var(--violet);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:var(--violet-soft);flex-shrink:0}
+.links-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.link-card{background:var(--plum-card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;transition:all .3s}
+.link-card:hover{border-color:var(--rose-border)}
+.link-card h4{font-size:.88rem;font-weight:600;color:var(--white);margin-bottom:4px}
+.link-card p{font-size:.76rem;color:var(--mauve);margin-bottom:8px}
+.link-card a{font-size:.76rem;font-weight:600}
+.disclaimer{background:var(--violet-dim);border:1px solid rgba(107,47,160,.2);border-radius:10px;padding:16px 20px;margin:24px 0;font-size:.82rem;color:var(--violet-soft)}
+.pg-footer{padding:32px 0;border-top:1px solid var(--border);text-align:center;font-size:.75rem;color:rgba(160,139,181,.4)}
+@media(max-width:768px){.compare,.links-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="index.html">&#8592; Voltar</a>
+  <span class="sep">|</span>
+  <a href="privacidade-chatgpt.html">Privacidade do ChatGPT &#8594;</a>
+</div>
+
+<div class="pg-hero">
+  <div class="container">
+    <h1>Configura&#231;&#227;o de Privacidade do<br>Claude (Anthropic)</h1>
+    <p>Como a Anthropic trata seus dados no Claude e quais configura&#231;&#245;es adotar para uso no &#226;mbito do Poder Judici&#225;rio, em conformidade com a Resolu&#231;&#227;o CNJ n&#186; 615/2025.</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="pg-section">
+    <h2>&#128220; Pol&#237;tica de Dados da Anthropic</h2>
+    <p>A Anthropic, desenvolvedora do Claude, adota uma postura diferenciada em rela&#231;&#227;o ao treinamento com dados de usu&#225;rios. Por padr&#227;o, as conversas realizadas atrav&#233;s da API e dos planos comerciais (Team e Enterprise) <strong>n&#227;o s&#227;o utilizadas para treinamento</strong> dos modelos.</p>
+    <p>No plano gratuito (claude.ai), a Anthropic pode utilizar conversas para melhoria dos modelos, mas oferece op&#231;&#227;o de exclus&#227;o (opt-out) f&#225;cil de ativar.</p>
+
+    <div class="info-box good">
+      <h4>&#9989; Vantagem do Claude</h4>
+      <p>Diferente de outros provedores, a Anthropic <strong>n&#227;o treina com dados de usu&#225;rios pagos por padr&#227;o</strong>. Nos planos Team e Enterprise, h&#225; compromisso contratual expl&#237;cito de n&#227;o utiliza&#231;&#227;o dos dados para treinamento, com per&#237;odo de reten&#231;&#227;o limitado e controles administrativos.</p>
+    </div>
+  </div>
+
+  <div class="pg-section">
+    <h2>Planos e N&#237;veis de Prote&#231;&#227;o</h2>
+    <div class="compare">
+      <div class="compare-card">
+        <h4>Plano Gratuito (claude.ai)</h4>
+        <ul>
+          <li>Conversas podem ser usadas para melhoria de modelos</li>
+          <li>Op&#231;&#227;o de opt-out dispon&#237;vel nas configura&#231;&#245;es</li>
+          <li>Dados retidos por at&#233; 90 dias ap&#243;s exclus&#227;o</li>
+          <li>Adequado para consultas sem dados sens&#237;veis</li>
+        </ul>
+      </div>
+      <div class="compare-card recommended">
+        <h4>&#10003; Plano Pro / Team / Enterprise (Recomendado)</h4>
+        <ul>
+          <li>Dados N&#195;O utilizados para treinamento por padr&#227;o</li>
+          <li>Compromisso contratual de n&#227;o treinamento</li>
+          <li>Reten&#231;&#227;o de dados limitada (configur&#225;vel no Enterprise)</li>
+          <li>Conformidade com SOC 2 Type II</li>
+          <li>Controles administrativos avan&#231;ados (Team/Enterprise)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="pg-section">
+    <h2>&#128295; Passo a Passo: Configura&#231;&#227;o de Privacidade</h2>
+
+    <h3>Para o Plano Gratuito / Pro (claude.ai)</h3>
+    <div class="step-list">
+      <div class="step-item">
+        <div>
+          <strong>Acesse as Configura&#231;&#245;es</strong>
+          <p>No <a href="https://claude.ai" target="_blank">claude.ai</a>, clique no seu nome (canto inferior esquerdo) &gt; <strong>Settings</strong>.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div>
+          <strong>Desative o Treinamento com Dados</strong>
+          <p>Na se&#231;&#227;o de privacidade, desative a op&#231;&#227;o <strong>&quot;Allow Anthropic to use your conversations to improve Claude&quot;</strong>. Isso impede que suas conversas sejam usadas para treinamento.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div>
+          <strong>Gerencie o Hist&#243;rico</strong>
+          <p>Voc&#234; pode excluir conversas individuais ou todo o hist&#243;rico a qualquer momento. Ap&#243;s a exclus&#227;o, os dados s&#227;o removidos dos sistemas ativos em at&#233; 90 dias.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Para Claude Code (CLI) e API</h3>
+    <div class="step-list">
+      <div class="step-item">
+        <div>
+          <strong>API: Prote&#231;&#227;o Autom&#225;tica</strong>
+          <p>Dados enviados via API <strong>nunca s&#227;o usados para treinamento</strong>, independentemente do plano. A reten&#231;&#227;o &#233; de no m&#225;ximo 30 dias para monitoramento de seguran&#231;a, sem uso para melhoria de modelos.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div>
+          <strong>Claude Code: Configura&#231;&#245;es Locais</strong>
+          <p>O Claude Code processa dados localmente na sua m&#225;quina. As intera&#231;&#245;es com a API seguem as mesmas pol&#237;ticas de n&#227;o treinamento. Dados do sistema de arquivos local n&#227;o s&#227;o transmitidos al&#233;m do necess&#225;rio para a consulta.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box highlight">
+      <h4>&#128161; Recomenda&#231;&#227;o para o Judici&#225;rio</h4>
+      <p>Para uso institucional com dados processuais, a combina&#231;&#227;o mais segura &#233;: <strong>plano Pro ou Team + opt-out de treinamento ativado</strong>. Para uso via API (integra&#231;&#245;es automatizadas), a prote&#231;&#227;o j&#225; &#233; nativa e n&#227;o requer configura&#231;&#227;o adicional.</p>
+    </div>
+  </div>
+
+  <div class="pg-section">
+    <h2>&#128279; Links Essenciais</h2>
+    <div class="links-grid">
+      <div class="link-card">
+        <h4>Configura&#231;&#245;es do Claude</h4>
+        <p>Gerenciar privacidade e opt-out de treinamento</p>
+        <a href="https://claude.ai/settings" target="_blank">Acessar &#8599;</a>
+      </div>
+      <div class="link-card">
+        <h4>Pol&#237;tica de Privacidade &mdash; Anthropic</h4>
+        <p>Documenta&#231;&#227;o oficial sobre tratamento de dados</p>
+        <a href="https://www.anthropic.com/privacy" target="_blank">Acessar &#8599;</a>
+      </div>
+      <div class="link-card">
+        <h4>Uso Aceit&#225;vel &mdash; Anthropic</h4>
+        <p>Pol&#237;tica de uso aceit&#225;vel e diretrizes de seguran&#231;a</p>
+        <a href="https://www.anthropic.com/policies" target="_blank">Acessar &#8599;</a>
+      </div>
+      <div class="link-card">
+        <h4>Seguran&#231;a Corporativa &mdash; Anthropic</h4>
+        <p>Detalhes sobre certifica&#231;&#245;es e prote&#231;&#227;o empresarial</p>
+        <a href="https://www.anthropic.com/security" target="_blank">Acessar &#8599;</a>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      &#128161; <strong>Resumo:</strong> O Claude &#233; uma das op&#231;&#245;es mais seguras para uso judici&#225;rio. Nos planos pagos e via API, os dados n&#227;o s&#227;o usados para treinamento por padr&#227;o. No plano gratuito, basta ativar o opt-out nas configura&#231;&#245;es.
+    </div>
+  </div>
+
+</div>
+
+<div class="pg-footer">
+  <div class="container">
+    Material de uso institucional interno &mdash; Em conformidade com a Resolu&#231;&#227;o CNJ n&#186; 615/2025.
+  </div>
+</div>
+
+</body>
+</html>
